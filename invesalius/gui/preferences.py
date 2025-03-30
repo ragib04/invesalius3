@@ -127,24 +127,24 @@ class Preferences(wx.Dialog):
         slice_interpolation = session.GetConfig("slice_interpolation")
 
         # logger = log.MyLogger()
-        file_logging = log.invLogger.GetConfig("file_logging")
-        file_logging_level = log.invLogger.GetConfig("file_logging_level")
-        append_log_file = log.invLogger.GetConfig("append_log_file")
-        logging_file = log.invLogger.GetConfig("logging_file")
-        console_logging = log.invLogger.GetConfig("console_logging")
-        console_logging_level = log.invLogger.GetConfig("console_logging_level")
+        # file_logging = log.invLogger.GetConfig("file_logging")
+        # file_logging_level = log.invLogger.GetConfig("file_logging_level")
+        # append_log_file = log.invLogger.GetConfig("append_log_file")
+        # logging_file = log.invLogger.GetConfig("logging_file")
+        # console_logging = log.invLogger.GetConfig("console_logging")
+        # console_logging_level = log.invLogger.GetConfig("console_logging_level")
 
         values = {
             const.RENDERING: rendering,
             const.SURFACE_INTERPOLATION: surface_interpolation,
             const.LANGUAGE: language,
             const.SLICE_INTERPOLATION: slice_interpolation,
-            const.FILE_LOGGING: file_logging,
-            const.FILE_LOGGING_LEVEL: file_logging_level,
-            const.APPEND_LOG_FILE: append_log_file,
-            const.LOGFILE: logging_file,
-            const.CONSOLE_LOGGING: console_logging,
-            const.CONSOLE_LOGGING_LEVEL: console_logging_level,
+            # const.FILE_LOGGING: file_logging,
+            # const.FILE_LOGGING_LEVEL: file_logging_level,
+            # const.APPEND_LOG_FILE: append_log_file,
+            # const.LOGFILE: logging_file,
+            # const.CONSOLE_LOGGING: console_logging,
+            # const.CONSOLE_LOGGING_LEVEL: console_logging_level,
         }
 
         self.visualization_tab.LoadSelection(values)
@@ -712,7 +712,7 @@ class LoggingTab(wx.Panel):
 
         self.Layout()
 
-    @log.call_tracking_decorator
+   # @log.call_tracking_decorator
     def OnModifyButton(self, e):
         logging_file = self.tc_log_file_name.GetValue()
         path, fname = os.path.split(logging_file)
@@ -757,7 +757,7 @@ class LoggingTab(wx.Panel):
         log.invLogger.SetConfig("console_logging", console_logging)
         console_logging_level = self.cb_console_logging_level.GetSelection()
         log.invLogger.SetConfig("console_logging_level", console_logging_level)
-        log.invLogger.configureLogging()
+       # log.invLogger.configureLogging()
 
         return options
 

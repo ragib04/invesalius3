@@ -30,7 +30,8 @@ def start():
     # Start the logging thread
     Logger.start_log_writer()
     logger = logging.getLogger(__name__)
-    logger.info("Hello ABC")
+    logger.info("This is a log message")
+    
     
     
 if __name__ == "__main__":

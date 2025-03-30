@@ -34,7 +34,7 @@ import invesalius.gui.default_viewers as viewers
 import invesalius.gui.dialogs as dlg
 import invesalius.gui.import_bitmap_panel as imp_bmp
 import invesalius.gui.import_panel as imp
-import invesalius.gui.log as log
+#import invesalius.gui.log as log
 import invesalius.gui.preferences as preferences
 
 #  import invesalius.gui.import_network_panel as imp_net
@@ -530,10 +530,10 @@ class Frame(wx.Frame):
         # logger = log.MyLogger()
 
         if not save and answer == wx.ID_YES:
-            log.invLogger.closeLogging()
+ #           log.invLogger.closeLogging()
             return 1  # Exit and delete session
         elif save and answer == wx.ID_YES:
-            log.invLogger.closeLogging()
+ #           log.invLogger.closeLogging()
             return 2  # Exit without deleting session
         else:
             return 0  # Don't Exit

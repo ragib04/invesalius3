@@ -60,12 +60,13 @@ from wx.adv import SPLASH_CENTRE_ON_SCREEN, SPLASH_TIMEOUT, SplashScreen
 #    if sys.platform != 'darwin':
 #        _SplashScreen = wx.SplashScreen
 import invesalius.gui.language_dialog as lang_dlg
-import invesalius.gui.log as log
+#import invesalius.gui.log as log
 import invesalius.i18n as i18n
 import invesalius.session as ses
 import invesalius.utils as utils
 from invesalius import inv_paths
 from invesalius.pubsub import pub as Publisher
+
 
 FS_ENCODE = sys.getfilesystemencoding()
 LANG = None
@@ -120,9 +121,12 @@ class InVesalius(wx.App):
         self.SetTopWindow(self.frame)
         self.frame.Show()
         self.frame.Raise()
-        # logger = log.MyLogger()
-        log.invLogger.configureLogging()
-
+      
+        from invesalius.logger import log_writer as Logger
+        import logging
+        Logger.start()
+        logger = logging.getLogger(__name__)
+        logger.info("Starting Invesalius!")
 
 # ------------------------------------------------------------------
 
@@ -598,7 +602,11 @@ def main(connection=None, remote_host=None):
     from invesalius.net.neuronavigation_api import NeuronavigationApi
 
     NeuronavigationApi(connection)
-
+    from invesalius.logger import log_writer as Logger
+    import logging
+    Logger.start()
+    logger = logging.getLogger(__name__)
+    logger.info("Starting Invesalius!")
     if args.no_gui:
         non_gui_startup(args)
     else:
